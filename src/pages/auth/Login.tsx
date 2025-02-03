@@ -74,12 +74,20 @@ const Login: React.FC = () => {
                 >
                     {mutation.isPending ? "Logging in..." : "Login"}
                 </button>
-                <p>
-                    Don't have an account?{" "}
-                    <Link to="/register" className="hover:underline duration-300">
-                        Register
-                    </Link>
-                </p>
+                <div>
+                    <p>
+                        You an admin?{" "}
+                        <Link to="/admin-register" className="hover:underline duration-300">
+                            Register
+                        </Link>
+                    </p>
+                    <p>
+                        Don't have an account?{" "}
+                        <Link to="/register" className="hover:underline duration-300">
+                            Register
+                        </Link>
+                    </p>
+                </div>
             </form>
             {mutation.isError && (
                 <p style={{color: "red"}}>
