@@ -5,6 +5,7 @@ export interface RootState {
         user?: {
             id: string;
             email: string;
+            roles: string[];
         };
     };
 }

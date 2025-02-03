@@ -2,14 +2,14 @@ import React, {useState} from "react";
 import {useMutation} from "@tanstack/react-query";
 import {useDispatch} from "react-redux";
 import {Link, useNavigate} from "react-router-dom";
-import {signup} from "../../redux/features/api.ts";
+import {adminSignup} from "../../redux/features/api.ts";
 import {login as loginAction} from "../../redux/features/userSlice.ts";
 
-type SignupData = {
+type AdminSignupData = {
     username: string;
     email: string;
     password: string;
-    mobileNumber: string;
+    mobileNumber?: string;
     roles?: string[];
     isAdmin?: boolean;
 };
@@ -32,14 +32,14 @@ type ApiErrorResponse = {
     message?: string;
 };
 
-const UserSignup: React.FC = () => {
-    const [formData, setFormData] = useState<SignupData>({
+const AdminSignupPage: React.FC = () => {
+    const [formData, setFormData] = useState<AdminSignupData>({
         username: "",
         email: "",
         password: "",
         mobileNumber: "",
-        roles: ["user"],
-        isAdmin: false,
+        roles: ["admin"],
+        isAdmin: true,
     });
 
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -47,8 +47,8 @@ const UserSignup: React.FC = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const mutation = useMutation<SignupResponse, ApiErrorResponse, SignupData>({
-        mutationFn: signup,
+    const mutation = useMutation<SignupResponse, ApiErrorResponse, AdminSignupData>({
+        mutationFn: adminSignup,
         onSuccess: (data) => {
             dispatch(loginAction(data));
             navigate("/");
@@ -56,7 +56,7 @@ const UserSignup: React.FC = () => {
         onError: (error) => {
             const message = error.response?.data?.message ||
                 error.message ||
-                "Signup failed. Please try again.";
+                "Admin signup failed. Please try again.";
             setErrorMessage(message);
         },
     });
@@ -77,7 +77,7 @@ const UserSignup: React.FC = () => {
             <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
                 <input
                     name="username"
-                    placeholder="Username"
+                    placeholder="Admin Username"
                     onChange={handleChange}
                     className="border border-white px-3 py-2 outline rounded-md lg:w-96 w-[80vw]"
                     required
@@ -85,7 +85,7 @@ const UserSignup: React.FC = () => {
                 <input
                     name="email"
                     type="email"
-                    placeholder="Email"
+                    placeholder="Admin Email"
                     onChange={handleChange}
                     className="border border-white px-3 py-2 outline rounded-md lg:w-96 w-[80vw]"
                     required
@@ -103,7 +103,6 @@ const UserSignup: React.FC = () => {
                     placeholder="Mobile Number"
                     onChange={handleChange}
                     className="border border-white px-3 py-2 outline rounded-md lg:w-96 w-[80vw]"
-                    required
                 />
                 {errorMessage && (
                     <p className="text-red-500 text-sm">{errorMessage}</p>
@@ -113,7 +112,7 @@ const UserSignup: React.FC = () => {
                     disabled={mutation.isPending}
                     className="bg-[#101727] text-white px-4 py-2 rounded-md lg:w-96 w-[80vw] cursor-pointer font-bold"
                 >
-                    {mutation.isPending ? "Signing up..." : "Signup"}
+                    {mutation.isPending ? "Creating Admin..." : "Create Admin"}
                 </button>
                 <p>
                     Already have an account?{" "}
@@ -126,4 +125,4 @@ const UserSignup: React.FC = () => {
     );
 };
 
-export default UserSignup;
+export default AdminSignupPage;

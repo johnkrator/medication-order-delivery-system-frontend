@@ -1,8 +1,11 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
+type UserRole = "admin" | "user";
+
 type User = {
     id: string;
     email: string;
+    roles: UserRole[];
 };
 
 type UserState = {
@@ -15,7 +18,7 @@ const initialState: UserState = {
     isAuthenticated: !!localStorage.getItem("token"),
     token: localStorage.getItem("token"),
     user: localStorage.getItem("user")
-        ? JSON.parse(localStorage.getItem("user")!)
+        ? {...JSON.parse(localStorage.getItem("user")!), roles: JSON.parse(localStorage.getItem("user")!).roles ?? []}
         : null
 };
 
@@ -27,11 +30,11 @@ const userSlice = createSlice({
             const {token, user} = action.payload;
             state.isAuthenticated = true;
             state.token = token;
-            state.user = user;
+            state.user = {...user, roles: Array.isArray(user.roles) ? user.roles : []};
 
             // Persist to local storage
             localStorage.setItem("token", token);
-            localStorage.setItem("user", JSON.stringify(user));
+            localStorage.setItem("user", JSON.stringify(state.user));
         },
         logout: (state) => {
             state.isAuthenticated = false;

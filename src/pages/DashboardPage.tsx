@@ -3,7 +3,7 @@ import SalesChart from "../components/SalesChart";
 import InventoryTable from "../components/InventoryRow";
 import {StatCard} from "../components/StatCard";
 
-const Dashboard: FC = () => {
+const DashboardPage: FC = () => {
     const [selectedTimeRange, setSelectedTimeRange] = useState<string>("Last week");
 
     return (
@@ -20,4 +20,4 @@ const Dashboard: FC = () => {
     );
 };
 
-export default Dashboard;
+export default DashboardPage;

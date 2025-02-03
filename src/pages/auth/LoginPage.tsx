@@ -18,7 +18,7 @@ type LoginResponse = {
     };
 };
 
-const Login: React.FC = () => {
+const LoginPage: React.FC = () => {
     const [credentials, setCredentials] = useState<LoginCredentials>({
         email: "",
         password: "",
@@ -34,7 +34,7 @@ const Login: React.FC = () => {
             navigate("/");
         },
         onError: (error) => {
-            console.error("Login failed: ", error);
+            console.error("LoginPage failed: ", error);
         },
     });
 
@@ -72,7 +72,7 @@ const Login: React.FC = () => {
                     disabled={mutation.isPending}
                     className="bg-[#101727] text-white px-4 py-2 rounded-md lg:w-96 w-[80vw] cursor-pointer font-bold"
                 >
-                    {mutation.isPending ? "Logging in..." : "Login"}
+                    {mutation.isPending ? "Logging in..." : "LoginPage"}
                 </button>
                 <div>
                     <p>
@@ -98,4 +98,4 @@ const Login: React.FC = () => {
     );
 };
 
-export default Login;
+export default LoginPage;
