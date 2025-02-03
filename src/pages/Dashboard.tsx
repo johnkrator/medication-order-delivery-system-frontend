@@ -8,7 +8,7 @@ const Dashboard: FC = () => {
 
     return (
         <>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-4">
                 <StatCard title="Total Revenue" value="$45,320" change="+12%" percentage="↑"/>
                 <StatCard title="New Orders" value="320" change="+8%" percentage="↑"/>
                 <StatCard title="Returning Customers" value="210" change="-5%" percentage="↓"/>
