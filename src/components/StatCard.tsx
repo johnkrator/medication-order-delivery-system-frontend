@@ -1,9 +1,4 @@
-interface StatCardProps {
-    title: string;
-    value: string;
-    change: string;
-    percentage: string;
-}
+import {StatCardProps} from "../common/interfaces.ts";
 
 export const StatCard = ({title, value, change, percentage}: StatCardProps) => (
     <div className="bg-[#111111] rounded-lg p-6">
