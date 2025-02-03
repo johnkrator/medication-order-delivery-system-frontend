@@ -32,7 +32,7 @@ type ApiErrorResponse = {
     message?: string;
 };
 
-const Signup: React.FC = () => {
+const UserSignup: React.FC = () => {
     const [formData, setFormData] = useState<SignupData>({
         username: "",
         email: "",
@@ -126,4 +126,4 @@ const Signup: React.FC = () => {
     );
 };
 
-export default Signup;
+export default UserSignup;

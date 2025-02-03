@@ -8,8 +8,10 @@ import UsersPage from "./pages/UsersPage.tsx";
 import DeliveryPartnerPage from "./pages/DeliveryPartnerPage.tsx";
 import SettingsPage from "./pages/SettingsPage.tsx";
 import Login from "./pages/auth/Login.tsx";
-import Signup from "./pages/auth/Signup.tsx";
+import UserSignup from "./pages/auth/UserSignup.tsx";
 import ProtectedRoute from "./components/ProtectedRoute.tsx";
+import AdminSignup from "./pages/auth/AdminSignup.tsx";
+import ErrorPage from "./components/ErrorPage.tsx";
 
 const Routes = () => {
     return createBrowserRouter([
@@ -30,8 +32,10 @@ const Routes = () => {
                     ]
                 },
                 {path: "login", element: <Login/>},
-                {path: "register", element: <Signup/>},
-            ]
+                {path: "register", element: <UserSignup/>},
+                {path: "admin-register", element: <AdminSignup/>},
+            ],
+            errorElement: <ErrorPage/>
         }
     ]);
 };
