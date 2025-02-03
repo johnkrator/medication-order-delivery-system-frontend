@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import {useMutation} from "@tanstack/react-query";
 import {useDispatch} from "react-redux";
+import {Link, useNavigate} from "react-router-dom";
 import {login as loginApi} from "../../redux/features/api.ts";
 import {login as loginAction} from "../../redux/features/userSlice.ts";
-import {Link} from "react-router-dom";
 
 type LoginCredentials = {
     email: string;
@@ -25,11 +25,13 @@ const Login: React.FC = () => {
     });
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const mutation = useMutation<LoginResponse, Error, LoginCredentials>({
         mutationFn: loginApi,
         onSuccess: (data) => {
             dispatch(loginAction(data));
+            navigate("/");
         },
         onError: (error) => {
             console.error("Login failed: ", error);
