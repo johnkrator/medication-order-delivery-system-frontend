@@ -10,7 +10,7 @@ export const signup = async (userData: {
     roles?: string[];
     isAdmin?: boolean;
 }) => {
-    const response = await axios.post(`${API_URL}/user/signup`, userData);
+    const response = await axios.post(`${API_URL}/user/create-user`, userData);
     return response.data;
 };
 
