@@ -1,9 +1,11 @@
-import {FC, useState} from "react";
+import {FC} from "react";
+import {Outlet} from "react-router-dom";
 import {Menu, X} from "lucide-react";
-import {LayoutProps} from "../common/interfaces.ts";
+import {useState} from "react";
 import Sidebar from "./Sidebar.tsx";
+import {DashboardHeader} from "./DashboardHeader.tsx";
 
-const Layout: FC<LayoutProps> = ({children}) => {
+const Layout: FC = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
 
     return (
@@ -21,8 +23,11 @@ const Layout: FC<LayoutProps> = ({children}) => {
 
             {/* Main Content */}
             <div className="flex-1 overflow-auto">
+                <div className="p-4 md:p-4">
+                    <DashboardHeader/>
+                </div>
                 <div className="p-4 md:p-6">
-                    {children}
+                    <Outlet/>
                 </div>
             </div>
         </div>
