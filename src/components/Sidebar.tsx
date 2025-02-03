@@ -54,7 +54,7 @@ const Sidebar: FC<SidebarProps> = ({isMobileMenuOpen}) => {
             <nav className="space-y-2 flex flex-col gap-1">
                 {isAuthenticated ? (
                     <>
-                        <SidebarItem to="/" icon={LayoutDashboard} text="Dashboard"/>
+                        <SidebarItem to="/" icon={LayoutDashboard} text="DashboardPage"/>
                         <SidebarItem to="/payments" icon={Package} text="Payments"/>
                         <SidebarItem to="/medications" icon={LucideMedal} text="Medications"/>
                         <SidebarItem to="/orders" icon={LucideListOrdered} text="Orders"/>

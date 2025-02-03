@@ -1,6 +1,6 @@
 import {FC} from "react";
 import {RouterProvider} from "react-router-dom";
-import Routes from "./Routes.tsx";
+import Routes from "./components/Routes.tsx";
 
 const App: FC = () => {
     return (

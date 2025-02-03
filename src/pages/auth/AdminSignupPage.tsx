@@ -3,7 +3,7 @@ import {useMutation} from "@tanstack/react-query";
 import {useDispatch} from "react-redux";
 import {Link, useNavigate} from "react-router-dom";
 import {adminSignup} from "../../redux/features/api.ts";
-import {login as loginAction} from "../../redux/features/userSlice.ts";
+import {login as loginAction, UserRole} from "../../redux/features/userSlice.ts";
 
 type AdminSignupData = {
     username: string;
@@ -20,6 +20,7 @@ type SignupResponse = {
         id: string;
         username: string;
         email: string;
+        roles: string[];
     };
 };
 
@@ -32,7 +33,7 @@ type ApiErrorResponse = {
     message?: string;
 };
 
-const AdminSignup: React.FC = () => {
+const AdminSignupPage: React.FC = () => {
     const [formData, setFormData] = useState<AdminSignupData>({
         username: "",
         email: "",
@@ -50,7 +51,19 @@ const AdminSignup: React.FC = () => {
     const mutation = useMutation<SignupResponse, ApiErrorResponse, AdminSignupData>({
         mutationFn: adminSignup,
         onSuccess: (data) => {
-            dispatch(loginAction(data));
+            const validRoles = data.user.roles.filter((role): role is UserRole =>
+                role === "admin" || role === "user"
+            );
+
+            dispatch(loginAction({
+                token: data.token,
+                user: {
+                    id: data.user.id,
+                    username: data.user.username,
+                    email: data.user.email,
+                    roles: validRoles.length > 0 ? validRoles : ["admin", "user"],
+                }
+            }));
             navigate("/");
         },
         onError: (error) => {
@@ -125,4 +138,4 @@ const AdminSignup: React.FC = () => {
     );
 };
 
-export default AdminSignup;
+export default AdminSignupPage;
