@@ -1,12 +1,5 @@
 import {FC} from "react";
-
-interface Order {
-    id: string;
-    date: string;
-    customer: string;
-    total: string;
-    status: "Shipped" | "Processing" | "Delivered";
-}
+import {Order} from "../common/interfaces.ts";
 
 const OrdersPage: FC = () => {
     const orderData: Order[] = [
