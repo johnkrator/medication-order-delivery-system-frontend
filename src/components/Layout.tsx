@@ -23,7 +23,7 @@ const Layout: FC = () => {
 
             {/* Main Content */}
             <div className="flex-1 overflow-auto">
-                <div className="p-4 md:p-4">
+                <div className="md:px-4 pt-10 p-4">
                     <DashboardHeader/>
                 </div>
                 <div className="p-4 md:p-6">

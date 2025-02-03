@@ -36,7 +36,7 @@ const Sidebar: FC<SidebarProps> = ({isMobileMenuOpen}) => {
                 <h1 className="text-xl font-semibold">PharmaTrade</h1>
             </div>
 
-            <nav className="space-y-2">
+            <nav className="space-y-2 flex flex-col gap-1">
                 <SidebarItem to="/" icon={LayoutDashboard} text="Dashboard"/>
                 <SidebarItem to="/payments" icon={Package} text="Payments"/>
                 <SidebarItem to="/medications" icon={BarChart2} text="Medications"/>
