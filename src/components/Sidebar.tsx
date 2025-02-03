@@ -1,23 +1,37 @@
 import {FC} from "react";
 import {
     LayoutDashboard,
-    Package,
     Users,
     Settings,
     LucideLogIn,
     LucideAlignHorizontalDistributeEnd,
     LucideListOrdered,
-    LucideMedal
+    LucideMedal, DollarSignIcon
 } from "lucide-react";
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
 import {SidebarItemProps, SidebarProps} from "../common/interfaces.ts";
 import {RootState} from "../redux/types/redux.ts";
-import {logout} from "../redux/features/userSlice.ts";
+import {logout, UserRole} from "../redux/features/userSlice.ts";
 
-const SidebarItem: FC<SidebarItemProps> = ({icon: Icon, text, to}) => {
+const SidebarItem: FC<SidebarItemProps & { allowedRoles?: UserRole[] }> = ({
+                                                                               icon: Icon,
+                                                                               text,
+                                                                               to,
+                                                                               allowedRoles = ["admin", "user"]
+                                                                           }) => {
     const location = useLocation();
     const isActive = location.pathname === to;
+    const userRoles = useSelector((state: RootState) => state.user.user?.roles ?? []);
+    const isAuthenticated = useSelector((state: RootState) => state.user.isAuthenticated);
+
+    // Check if user has at least one of the allowed roles
+    const hasAllowedRole = allowedRoles.some(role => userRoles.includes(role));
+
+    // If user is not authenticated or doesn't have an allowed role, don't render the item
+    if (!isAuthenticated || !hasAllowedRole) {
+        return null;
+    }
 
     return (
         <Link to={to}>
@@ -31,6 +45,7 @@ const SidebarItem: FC<SidebarItemProps> = ({icon: Icon, text, to}) => {
 
 const Sidebar: FC<SidebarProps> = ({isMobileMenuOpen}) => {
     const isAuthenticated = useSelector((state: RootState) => state.user.isAuthenticated);
+    useSelector((state: RootState) => state.user.user?.roles ?? []);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -55,18 +70,50 @@ const Sidebar: FC<SidebarProps> = ({isMobileMenuOpen}) => {
                 {isAuthenticated ? (
                     <>
                         <SidebarItem to="/" icon={LayoutDashboard} text="DashboardPage"/>
-                        <SidebarItem to="/payments" icon={Package} text="Payments"/>
-                        <SidebarItem to="/medications" icon={LucideMedal} text="Medications"/>
-                        <SidebarItem to="/orders" icon={LucideListOrdered} text="Orders"/>
-                        <SidebarItem to="/users" icon={Users} text="Users"/>
-                        <SidebarItem to="/deliveries" icon={LucideAlignHorizontalDistributeEnd}
-                                     text="Delivery Partners"/>
-                        <SidebarItem to="/settings" icon={Settings} text="Settings"/>
+
+                        {/* Admin-only items */}
+                        <SidebarItem
+                            to="/payments"
+                            icon={DollarSignIcon}
+                            text="Payments"
+                            allowedRoles={["admin"]}
+                        />
+                        <SidebarItem
+                            to="/orders"
+                            icon={LucideListOrdered}
+                            text="Orders"
+                            allowedRoles={["admin"]}
+                        />
+                        <SidebarItem
+                            to="/users"
+                            icon={Users}
+                            text="Users"
+                            allowedRoles={["admin"]}
+                        />
+                        <SidebarItem
+                            to="/deliveries"
+                            icon={LucideAlignHorizontalDistributeEnd}
+                            text="Delivery Partners"
+                            allowedRoles={["admin"]}
+                        />
+
+                        {/* Items for both admin and user */}
+                        <SidebarItem
+                            to="/medications"
+                            icon={LucideMedal}
+                            text="Medications"
+                        />
+                        <SidebarItem
+                            to="/settings"
+                            icon={Settings}
+                            text="Settings"
+                        />
+
                         <button
                             onClick={handleLogout}
-                            className="flex items-center px-4 py-2 rounded-lg hover:bg-gray-900 w-full text-left"
+                            className="flex items-center px-4 py-2 rounded-lg hover:bg-gray-900 w-full text-left cursor-pointer"
                         >
-                            <Settings className="w-5 h-5 mr-3"/>
+                            <LucideLogIn className="w-5 h-5 mr-3"/>
                             <span>Logout</span>
                         </button>
                     </>
