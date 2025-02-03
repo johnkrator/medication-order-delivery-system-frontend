@@ -1,12 +1,5 @@
 import {FC} from "react";
-
-interface Payment {
-    id: string;
-    date: string;
-    amount: string;
-    status: "Completed" | "Pending" | "Failed";
-    customer: string;
-}
+import {Payment} from "../common/interfaces.ts";
 
 const PaymentPage: FC = () => {
     const paymentData: Payment[] = [

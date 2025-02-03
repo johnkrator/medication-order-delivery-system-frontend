@@ -1,12 +1,10 @@
 import {FC} from "react";
 import {
     LayoutDashboard,
-    BarChart2,
     Package,
     Users,
-    ClipboardList,
     Settings,
-    HelpCircle,
+    LucideLogIn, LucideAlignHorizontalDistributeEnd, LucideListOrdered, LucideMedal,
 } from "lucide-react";
 import {Link, useLocation} from "react-router-dom";
 import {SidebarItemProps, SidebarProps} from "../common/interfaces.ts";
@@ -33,17 +31,20 @@ const Sidebar: FC<SidebarProps> = ({isMobileMenuOpen}) => {
       fixed md:relative top-[64px] md:top-0 h-screen z-50
     `}>
             <div className="hidden md:block mb-8">
-                <h1 className="text-xl font-semibold">PharmaTrade</h1>
+                <Link to="/">
+                    <h1 className="text-xl font-semibold">PharmaTrade</h1>
+                </Link>
             </div>
 
             <nav className="space-y-2 flex flex-col gap-1">
                 <SidebarItem to="/" icon={LayoutDashboard} text="Dashboard"/>
                 <SidebarItem to="/payments" icon={Package} text="Payments"/>
-                <SidebarItem to="/medications" icon={BarChart2} text="Medications"/>
-                <SidebarItem to="/orders" icon={ClipboardList} text="Orders"/>
+                <SidebarItem to="/medications" icon={LucideMedal} text="Medications"/>
+                <SidebarItem to="/orders" icon={LucideListOrdered} text="Orders"/>
                 <SidebarItem to="/users" icon={Users} text="Users"/>
-                <SidebarItem to="/deliveries" icon={HelpCircle} text="Delivery Partners"/>
+                <SidebarItem to="/deliveries" icon={LucideAlignHorizontalDistributeEnd} text="Delivery Partners"/>
                 <SidebarItem to="/settings" icon={Settings} text="Settings"/>
+                <SidebarItem to="/login" icon={LucideLogIn} text="Login"/>
             </nav>
         </div>
     );

@@ -1,12 +1,5 @@
 import {FC} from "react";
-
-interface Medication {
-    id: string;
-    name: string;
-    quantity: number;
-    price: string;
-    status: "In Stock" | "Out of Stock";
-}
+import {Medication} from "../common/interfaces.ts";
 
 const MedicationPage: FC = () => {
     const medicationData: Medication[] = [

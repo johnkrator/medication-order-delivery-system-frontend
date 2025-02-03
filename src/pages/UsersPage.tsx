@@ -1,11 +1,5 @@
 import {FC} from "react";
-
-interface User {
-    id: string;
-    name: string;
-    email: string;
-    role: string;
-}
+import {User} from "../common/interfaces.ts";
 
 const UsersPage: FC = () => {
     const userData: User[] = [
