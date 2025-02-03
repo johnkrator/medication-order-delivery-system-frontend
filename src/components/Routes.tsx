@@ -12,6 +12,7 @@ import UserSignupPage from "../pages/auth/UserSignupPage.tsx";
 import ProtectedRoute from "./ProtectedRoute.tsx";
 import AdminSignupPage from "../pages/auth/AdminSignupPage.tsx";
 import ErrorPage from "../pages/ErrorPage.tsx";
+import UnauthorizedPage from "./UnauthorizedPage.tsx";
 
 const Routes = () => {
     return createBrowserRouter([
@@ -39,6 +40,7 @@ const Routes = () => {
                 {path: "login", element: <LoginPage/>},
                 {path: "register", element: <UserSignupPage/>},
                 {path: "admin-register", element: <AdminSignupPage/>},
+                {path: "unauthorized", element: <UnauthorizedPage/>},
             ],
             errorElement: <ErrorPage/>
         }

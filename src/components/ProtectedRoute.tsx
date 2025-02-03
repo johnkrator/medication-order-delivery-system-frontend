@@ -16,9 +16,9 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({allowedRoles}) => {
         return <Navigate to="/login" replace/>;
     }
 
-    // Ensure allowedRoles exists, otherwise assume all authenticated users can access
-    if (allowedRoles?.length) {
-        const hasAccess = userRoles.some(role => allowedRoles.includes(role));
+    if (allowedRoles && allowedRoles.length > 0) {
+        const roleSet = new Set(userRoles); // Convert userRoles to a Set for faster lookups
+        const hasAccess = allowedRoles.some(role => roleSet.has(role));
 
         if (!hasAccess) {
             console.warn("User does not have the required roles. Redirecting to unauthorized.");
