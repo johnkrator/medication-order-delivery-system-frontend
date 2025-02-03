@@ -1,11 +1,11 @@
 import {FC} from "react";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
-import InventoryPage from "./pages/InventoryPage";
-import SalesPage from "./pages/SalesPage";
+import PaymentPage from "./pages/PaymentPage.tsx";
+import MedicationPage from "./pages/MedicationPage.tsx";
 import OrdersPage from "./pages/OrdersPage";
-import CustomersPage from "./pages/CustomersPage";
-import SupportPage from "./pages/SupportPage";
+import UsersPage from "./pages/UsersPage.tsx";
+import DeliveryPartnerPage from "./pages/DeliveryPartnerPage.tsx";
 import SettingsPage from "./pages/SettingsPage";
 
 const App: FC = () => {
@@ -13,11 +13,11 @@ const App: FC = () => {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Dashboard/>}/>
-                <Route path="/inventory" element={<InventoryPage/>}/>
-                <Route path="/sales" element={<SalesPage/>}/>
+                <Route path="/payments" element={<PaymentPage/>}/>
+                <Route path="/medications" element={<MedicationPage/>}/>
                 <Route path="/orders" element={<OrdersPage/>}/>
-                <Route path="/customers" element={<CustomersPage/>}/>
-                <Route path="/support" element={<SupportPage/>}/>
+                <Route path="/users" element={<UsersPage/>}/>
+                <Route path="/deliveries" element={<DeliveryPartnerPage/>}/>
                 <Route path="/settings" element={<SettingsPage/>}/>
             </Routes>
         </BrowserRouter>

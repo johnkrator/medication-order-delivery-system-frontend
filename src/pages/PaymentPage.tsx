@@ -1,4 +1,4 @@
-const InventoryPage = () => {
+const PaymentPage = () => {
     return (
         <div>
             InventoryPage
@@ -6,4 +6,4 @@ const InventoryPage = () => {
     );
 };
 
-export default InventoryPage;
+export default PaymentPage;

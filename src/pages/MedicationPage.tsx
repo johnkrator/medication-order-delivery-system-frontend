@@ -1,4 +1,4 @@
-const SalesPage = () => {
+const MedicationPage = () => {
     return (
         <div>
             SalesPage
@@ -6,4 +6,4 @@ const SalesPage = () => {
     );
 };
 
-export default SalesPage;
+export default MedicationPage;

@@ -38,11 +38,11 @@ const Sidebar: FC<SidebarProps> = ({isMobileMenuOpen}) => {
 
             <nav className="space-y-2">
                 <SidebarItem to="/" icon={LayoutDashboard} text="Dashboard"/>
-                <SidebarItem to="/inventory" icon={Package} text="Payments"/>
-                <SidebarItem to="/sales" icon={BarChart2} text="Medications"/>
+                <SidebarItem to="/payments" icon={Package} text="Payments"/>
+                <SidebarItem to="/medications" icon={BarChart2} text="Medications"/>
                 <SidebarItem to="/orders" icon={ClipboardList} text="Orders"/>
-                <SidebarItem to="/customers" icon={Users} text="Users"/>
-                <SidebarItem to="/support" icon={HelpCircle} text="Delivery Partners"/>
+                <SidebarItem to="/users" icon={Users} text="Users"/>
+                <SidebarItem to="/deliveries" icon={HelpCircle} text="Delivery Partners"/>
                 <SidebarItem to="/settings" icon={Settings} text="Settings"/>
             </nav>
         </div>

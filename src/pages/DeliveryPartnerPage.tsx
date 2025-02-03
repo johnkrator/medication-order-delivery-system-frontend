@@ -1,4 +1,4 @@
-const SupportPage = () => {
+const DeliveryPartnerPage = () => {
     return (
         <div>
             SupportPage
@@ -6,4 +6,4 @@ const SupportPage = () => {
     );
 };
 
-export default SupportPage;
+export default DeliveryPartnerPage;
