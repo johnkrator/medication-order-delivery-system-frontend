@@ -4,6 +4,7 @@ import {useDispatch} from "react-redux";
 import {Link, useNavigate} from "react-router-dom";
 import {login as loginApi} from "../../redux/features/api.ts";
 import {login as loginAction} from "../../redux/features/userSlice.ts";
+import {UserRole} from "../../redux/features/userSlice"; // Import UserRole
 
 type LoginCredentials = {
     email: string;
@@ -14,7 +15,9 @@ type LoginResponse = {
     token: string;
     user: {
         id: string;
+        username: string;
         email: string;
+        roles: string[];
     };
 };
 
@@ -30,11 +33,23 @@ const LoginPage: React.FC = () => {
     const mutation = useMutation<LoginResponse, Error, LoginCredentials>({
         mutationFn: loginApi,
         onSuccess: (data) => {
-            dispatch(loginAction(data));
+            const validRoles = data.user.roles.filter((role): role is UserRole =>
+                role === "admin" || role === "user"
+            );
+
+            dispatch(loginAction({
+                token: data.token,
+                user: {
+                    id: data.user.id,
+                    username: data.user.username,
+                    email: data.user.email,
+                    roles: validRoles.length > 0 ? validRoles : ["user"],
+                },
+            }));
             navigate("/");
         },
         onError: (error) => {
-            console.error("LoginPage failed: ", error);
+            console.error("Login failed: ", error);
         },
     });
 
@@ -49,7 +64,7 @@ const LoginPage: React.FC = () => {
     };
 
     return (
-        <div className="flex items-center justify-center lg:mt-50 mt-20">
+        <div className="flex flex-col gap-1 items-center justify-center lg:mt-50 mt-20">
             <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
                 <input
                     className="border border-white px-3 py-2 outline rounded-md lg:w-96 w-[80vw]"
@@ -72,7 +87,7 @@ const LoginPage: React.FC = () => {
                     disabled={mutation.isPending}
                     className="bg-[#101727] text-white px-4 py-2 rounded-md lg:w-96 w-[80vw] cursor-pointer font-bold"
                 >
-                    {mutation.isPending ? "Logging in..." : "LoginPage"}
+                    {mutation.isPending ? "Logging in..." : "Login"}
                 </button>
                 <div>
                     <p>
