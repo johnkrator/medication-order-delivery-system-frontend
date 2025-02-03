@@ -4,6 +4,7 @@ import {useDispatch} from "react-redux";
 import {Link, useNavigate} from "react-router-dom";
 import {signup} from "../../redux/features/api.ts";
 import {login as loginAction, UserRole} from "../../redux/features/userSlice.ts";
+import {Eye, EyeOff} from "lucide-react";
 
 type SignupData = {
     username: string;
@@ -34,6 +35,12 @@ type ApiErrorResponse = {
 };
 
 const UserSignupPage: React.FC = () => {
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
+
     const [formData, setFormData] = useState<SignupData>({
         username: "",
         email: "",
@@ -103,14 +110,27 @@ const UserSignupPage: React.FC = () => {
                     className="border border-white px-3 py-2 outline rounded-md lg:w-96 w-[80vw]"
                     required
                 />
-                <input
-                    name="password"
-                    type="password"
-                    placeholder="Password"
-                    onChange={handleChange}
-                    className="border border-white px-3 py-2 outline rounded-md lg:w-96 w-[80vw]"
-                    required
-                />
+                <div className="relative">
+                    <input
+                        name="password"
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Password"
+                        onChange={handleChange}
+                        className="border border-white px-3 py-2 outline rounded-md lg:w-96 w-[80vw]"
+                        required
+                    />
+                    <button
+                        type="button"
+                        onClick={togglePasswordVisibility}
+                        className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 cursor-pointer"
+                    >
+                        {showPassword ? (
+                            <EyeOff className="w-5 h-5"/>
+                        ) : (
+                            <Eye className="w-5 h-5"/>
+                        )}
+                    </button>
+                </div>
                 <input
                     name="mobileNumber"
                     placeholder="Mobile Number"
