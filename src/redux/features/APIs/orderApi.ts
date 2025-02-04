@@ -1,7 +1,7 @@
 import axios from "axios";
 import {CreateOrderDto} from "../../../common/interfaces.ts";
 
-const API_URL = "http://localhost:3000/api";
+const API_URL = "https://pharmatradeapi.vercel.app/api";
 
 export const orderApi = {
     fetchOrders: async () => {
