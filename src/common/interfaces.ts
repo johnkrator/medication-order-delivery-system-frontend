@@ -78,3 +78,38 @@ export interface User {
     email: string;
     role: string;
 }
+
+export enum OrderStatus {
+    PENDING = "PENDING",
+    PROCESSING = "PROCESSING",
+    SHIPPED = "SHIPPED",
+    DELIVERED = "DELIVERED",
+    CANCELLED = "CANCELLED"
+}
+
+export interface Medication {
+    id: string;
+    name: string;
+    price: string; // Changed to string to match the earlier definition
+}
+
+export interface Order {
+    id: string;
+    userId: string;
+    medications: Medication[];
+    totalAmount: string; // Changed to string
+    deliveryAddress?: string;
+    specialInstructions?: string;
+    status: "Shipped" | "Processing" | "Delivered"; // Match the earlier type
+    date: string;
+    paymentReference?: string;
+}
+
+export interface CreateOrderDto {
+    userId: string;
+    medicationIds: string[];
+    deliveryAddress?: string;
+    specialInstructions?: string;
+    deliveryPartnerId?: string;
+    status?: OrderStatus;
+}
