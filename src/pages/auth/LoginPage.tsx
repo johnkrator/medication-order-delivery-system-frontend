@@ -3,7 +3,7 @@ import {Eye, EyeOff} from "lucide-react";
 import {useMutation} from "@tanstack/react-query";
 import {useDispatch} from "react-redux";
 import {Link, useNavigate} from "react-router-dom";
-import {login as loginApi} from "../../redux/features/api.ts";
+import {login as loginApi} from "../../redux/features/APIs/userApi.ts";
 import {login as loginAction} from "../../redux/features/userSlice.ts";
 import {UserRole} from "../../redux/features/userSlice";
 
@@ -139,7 +139,7 @@ export default LoginPage;
 // import {useMutation} from "@tanstack/react-query";
 // import {useDispatch} from "react-redux";
 // import {Link, useNavigate} from "react-router-dom";
-// import {login as loginApi} from "../../redux/features/api.ts";
+// import {login as loginApi} from "../../redux/features/userApi.ts";
 // import {login as loginAction} from "../../redux/features/userSlice.ts";
 // import {UserRole} from "../../redux/features/userSlice"; // Import UserRole
 //

@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {useMutation} from "@tanstack/react-query";
 import {useDispatch} from "react-redux";
 import {Link, useNavigate} from "react-router-dom";
-import {signup} from "../../redux/features/api.ts";
+import {signup} from "../../redux/features/APIs/userApi.ts";
 import {login as loginAction, UserRole} from "../../redux/features/userSlice.ts";
 import {Eye, EyeOff} from "lucide-react";
 
