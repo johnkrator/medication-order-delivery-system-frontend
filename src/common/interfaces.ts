@@ -113,3 +113,57 @@ export interface CreateOrderDto {
     deliveryPartnerId?: string;
     status?: OrderStatus;
 }
+
+export interface CreatePaymentDto {
+    orderId: string;
+    amount: number;
+    email: string;
+}
+
+export interface VerifyPaymentDto {
+    transactionId: string;
+}
+
+export interface CreateMedicationDto {
+    name: string;
+    price: string;
+    manufacturer: string;
+    description: string;
+    dosage: string;
+    stockQuantity: number;
+}
+
+export interface CreateDeliveryPartnerDto {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    vehicleType?: string;
+    isAvailable?: boolean;
+}
+
+export interface Payment {
+    id: string;
+    date: string;
+    amount: string;
+    status: "Completed" | "Pending" | "Failed";
+    customer: string;
+}
+
+export interface Medication {
+    id: string;
+    name: string;
+    quantity: number;
+    price: string;
+    status: "In Stock" | "Out of Stock";
+}
+
+export interface DeliveryPartner {
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    vehicleType?: string;
+    isAvailable?: boolean;
+}
