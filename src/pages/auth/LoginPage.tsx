@@ -48,7 +48,11 @@ const LoginPage: React.FC = () => {
                     roles: validRoles.length > 0 ? validRoles : ["user"],
                 },
             }));
-            navigate("/");
+            if (validRoles.includes("admin")) {
+                navigate("/");
+            } else {
+                navigate("/medications");
+            }
         },
         onError: (error) => {
             console.error("Login failed: ", error);
