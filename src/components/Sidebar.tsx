@@ -69,7 +69,12 @@ const Sidebar: FC<SidebarProps> = ({isMobileMenuOpen}) => {
             <nav className="space-y-2 flex flex-col gap-1">
                 {isAuthenticated ? (
                     <>
-                        <SidebarItem to="/" icon={LayoutDashboard} text="DashboardPage"/>
+                        <SidebarItem
+                            to="/"
+                            icon={LayoutDashboard}
+                            text="Dashboard"
+                            allowedRoles={["admin"]}
+                        />
 
                         {/* Admin-only items */}
                         <SidebarItem
