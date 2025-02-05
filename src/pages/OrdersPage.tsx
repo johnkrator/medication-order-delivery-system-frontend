@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {CreateOrderDto} from "../common/interfaces";
 import {AppDispatch, RootState} from "../redux/store/store.ts";
-import {createOrder, deleteOrder, fetchOrders, updateOrder} from "../redux/features/orderThunks.ts";
+import {createOrder, deleteOrder, fetchOrders, updateOrder} from "../redux/features/order/orderThunks.ts";
 
 const OrdersPage: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();

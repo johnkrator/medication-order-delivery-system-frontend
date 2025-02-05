@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../redux/store/store";
-import {fetchDeliveryPartners} from "../redux/features/deliveryPartnerThunks";
+import {fetchDeliveryPartners} from "../redux/features/delivery-partner/deliveryPartnerThunks.ts";
 
 const DeliveryPartnerPage: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -55,14 +55,3 @@ const DeliveryPartnerPage: React.FC = () => {
 };
 
 export default DeliveryPartnerPage;
-
-
-// const DeliveryPartnerPage = () => {
-//     return (
-//         <div>
-//             SupportPage
-//         </div>
-//     );
-// };
-//
-// export default DeliveryPartnerPage;

@@ -12,9 +12,9 @@ import {
     deleteOrderStart,
     deleteOrderSuccess,
     deleteOrderFailure
-} from "./orderSlice";
-import {orderApi} from "./APIs/orderApi.ts";
-import {CreateOrderDto} from "../../common/interfaces.ts";
+} from "./orderSlice.ts";
+import {orderApi} from "../APIs/orderApi.ts";
+import {CreateOrderDto} from "../../../common/interfaces.ts";
 
 // Helper function to extract error message
 const getErrorMessage = (error: unknown): string => {

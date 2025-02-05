@@ -1,6 +1,6 @@
 import {useMutation, useQueryClient} from "react-query";
-import {CreateOrderDto} from "../../common/interfaces.ts";
-import {orderApi} from "./APIs/orderApi.ts";
+import {CreateOrderDto} from "../../../common/interfaces.ts";
+import {orderApi} from "../APIs/orderApi.ts";
 
 export const useCreateOrder = () => {
     const queryClient = useQueryClient();

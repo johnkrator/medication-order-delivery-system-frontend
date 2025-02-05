@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {CreateOrderDto} from "../common/interfaces"; // Ensure this import exists
-import {useCreateOrder} from "../redux/features/orderQueries.ts";
+import {useCreateOrder} from "../redux/features/order/orderQueries.ts";
 
 const CreateOrderForm: React.FC = () => {
     const [orderData, setOrderData] = useState<CreateOrderDto>({
