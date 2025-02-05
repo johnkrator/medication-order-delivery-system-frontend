@@ -1,7 +1,7 @@
 import axios from "axios";
 import {CreateOrderDto} from "../../../common/interfaces.ts";
 
-const API_URL = import.meta.env.VITE_API_URL || "https://pharmatradeapi.vercel.app/api";
+const API_URL = "https://pharmatradeapi.vercel.app/api";
 
 export const orderApi = {
     fetchOrders: async () => {

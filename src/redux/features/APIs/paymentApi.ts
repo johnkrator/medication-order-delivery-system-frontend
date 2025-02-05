@@ -1,7 +1,7 @@
 import axios from "axios";
 import {CreatePaymentDto, VerifyPaymentDto} from "../../../common/interfaces.ts";
 
-const API_URL = import.meta.env.VITE_API_URL || "https://pharmatradeapi.vercel.app/api";
+const API_URL = "https://pharmatradeapi.vercel.app/api";
 
 export const paymentApi = {
     fetchPayments: async () => {
