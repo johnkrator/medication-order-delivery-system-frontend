@@ -71,7 +71,11 @@ const UserSignupPage: React.FC = () => {
                     roles: validRoles.length > 0 ? validRoles : ["user"],
                 },
             }));
-            navigate("/");
+            if (validRoles.includes("admin")) {
+                navigate("/");
+            } else {
+                navigate("/medications");
+            }
         },
         onError: (error) => {
             const message = error.response?.data?.message ||
