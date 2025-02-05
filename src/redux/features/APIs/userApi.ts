@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const API_URL = import.meta.env.VITE_API_URL || "https://pharmatradeapi.vercel.app/api";
+const API_URL = "https://pharmatradeapi.vercel.app/api";
 
-// Create an axios instance with default headers
+// An axios instance with default headers
 const api = axios.create({
     baseURL: API_URL,
     headers: {
