@@ -1,5 +1,5 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {paymentApi} from "./APIs/paymentApi";
+import {paymentApi} from "../APIs/paymentApi.ts";
 import {
     fetchPaymentsStart,
     fetchPaymentsSuccess,
@@ -7,8 +7,8 @@ import {
     createPaymentStart,
     createPaymentSuccess,
     createPaymentFailure
-} from "./paymentSlice";
-import {CreatePaymentDto} from "../../common/interfaces";
+} from "./paymentSlice.ts";
+import {CreatePaymentDto} from "../../../common/interfaces.ts";
 
 const getErrorMessage = (error: unknown): string => {
     if (error instanceof Error) return error.message;

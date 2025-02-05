@@ -124,15 +124,6 @@ export interface VerifyPaymentDto {
     transactionId: string;
 }
 
-export interface CreateMedicationDto {
-    name: string;
-    price: string;
-    manufacturer: string;
-    description: string;
-    dosage: string;
-    stockQuantity: number;
-}
-
 export interface CreateDeliveryPartnerDto {
     firstName: string;
     lastName: string;
@@ -155,6 +146,8 @@ export interface Medication {
     name: string;
     quantity: number;
     price: string;
+    stockQuantity: number;
+    manufacturer: string;
     status: "In Stock" | "Out of Stock";
 }
 
@@ -166,4 +159,23 @@ export interface DeliveryPartner {
     phone: string;
     vehicleType?: string;
     isAvailable?: boolean;
+}
+
+export interface CreateMedicationDto {
+    name: string;
+    price: string;
+    manufacturer: string;
+    description: string;
+    dosage: string;
+    stockQuantity: number;
+}
+
+export interface PaginatedResponse<T> {
+    data: T[];
+    meta: {
+        total: number;
+        page: number;
+        limit: number;
+        totalPages: number;
+    };
 }

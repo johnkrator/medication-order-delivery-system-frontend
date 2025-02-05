@@ -1,6 +1,6 @@
 import {useMutation, useQueryClient} from "react-query";
-import {CreateDeliveryPartnerDto} from "../../common/interfaces";
-import {deliveryPartnerApi} from "./APIs/deliveryPartnerApi";
+import {CreateDeliveryPartnerDto} from "../../../common/interfaces.ts";
+import {deliveryPartnerApi} from "../APIs/deliveryPartnerApi.ts";
 
 export const useCreateDeliveryPartner = () => {
     const queryClient = useQueryClient();

@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {Payment} from "../../common/interfaces";
+import {Payment} from "../../../common/interfaces.ts";
 
 interface PaymentState {
     payments: Payment[];

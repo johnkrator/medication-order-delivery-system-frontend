@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {Medication} from "../../common/interfaces";
+import {Medication} from "../../../common/interfaces.ts";
 
 interface MedicationState {
     medications: Medication[];
@@ -10,7 +10,7 @@ interface MedicationState {
 const initialState: MedicationState = {
     medications: [],
     loading: false,
-    error: null
+    error: null,
 };
 
 const medicationSlice = createSlice({
@@ -40,8 +40,8 @@ const medicationSlice = createSlice({
         createMedicationFailure(state, action: PayloadAction<string>) {
             state.loading = false;
             state.error = action.payload;
-        }
-    }
+        },
+    },
 });
 
 export const {
@@ -50,7 +50,7 @@ export const {
     fetchMedicationsFailure,
     createMedicationStart,
     createMedicationSuccess,
-    createMedicationFailure
+    createMedicationFailure,
 } = medicationSlice.actions;
 
 export default medicationSlice.reducer;

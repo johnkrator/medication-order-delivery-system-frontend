@@ -1,5 +1,5 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {deliveryPartnerApi} from "./APIs/deliveryPartnerApi";
+import {deliveryPartnerApi} from "../APIs/deliveryPartnerApi.ts";
 import {
     fetchDeliveryPartnersStart,
     fetchDeliveryPartnersSuccess,
@@ -7,8 +7,8 @@ import {
     createDeliveryPartnerStart,
     createDeliveryPartnerSuccess,
     createDeliveryPartnerFailure
-} from "./deliveryPartnerSlice";
-import {CreateDeliveryPartnerDto} from "../../common/interfaces";
+} from "./deliveryPartnerSlice.ts";
+import {CreateDeliveryPartnerDto} from "../../../common/interfaces.ts";
 
 const getErrorMessage = (error: unknown): string => {
     if (error instanceof Error) return error.message;

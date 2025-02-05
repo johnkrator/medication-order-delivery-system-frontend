@@ -1,6 +1,6 @@
 import {useMutation, useQueryClient} from "react-query";
-import {CreatePaymentDto} from "../../common/interfaces";
-import {paymentApi} from "./APIs/paymentApi";
+import {CreatePaymentDto} from "../../../common/interfaces.ts";
+import {paymentApi} from "../APIs/paymentApi.ts";
 
 export const useCreatePayment = () => {
     const queryClient = useQueryClient();

@@ -1,6 +1,6 @@
 import {useMutation, useQueryClient} from "react-query";
-import {CreateMedicationDto} from "../../common/interfaces";
-import {medicationApi} from "./APIs/medicationApi";
+import {CreateMedicationDto} from "../../../common/interfaces.ts";
+import {medicationApi} from "../APIs/medicationApi.ts";
 
 export const useCreateMedication = () => {
     const queryClient = useQueryClient();

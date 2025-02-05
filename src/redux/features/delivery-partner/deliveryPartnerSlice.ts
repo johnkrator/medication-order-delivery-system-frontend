@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {DeliveryPartner} from "../../common/interfaces";
+import {DeliveryPartner} from "../../../common/interfaces.ts";
 
 interface DeliveryPartnerState {
     deliveryPartners: DeliveryPartner[];

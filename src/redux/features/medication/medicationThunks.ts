@@ -1,14 +1,14 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {medicationApi} from "./APIs/medicationApi";
+import {medicationApi} from "../APIs/medicationApi.ts";
 import {
     fetchMedicationsStart,
     fetchMedicationsSuccess,
     fetchMedicationsFailure,
     createMedicationStart,
     createMedicationSuccess,
-    createMedicationFailure
-} from "./medicationSlice";
-import {CreateMedicationDto} from "../../common/interfaces";
+    createMedicationFailure,
+} from "./medicationSlice.ts";
+import {CreateMedicationDto} from "../../../common/interfaces.ts";
 
 const getErrorMessage = (error: unknown): string => {
     if (error instanceof Error) return error.message;
