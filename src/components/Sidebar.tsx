@@ -78,12 +78,6 @@ const Sidebar: FC<SidebarProps> = ({isMobileMenuOpen}) => {
 
                         {/* Admin-only items */}
                         <SidebarItem
-                            to="/payments"
-                            icon={DollarSignIcon}
-                            text="Payments"
-                            allowedRoles={["admin"]}
-                        />
-                        <SidebarItem
                             to="/orders"
                             icon={LucideListOrdered}
                             text="Orders"
@@ -99,6 +93,12 @@ const Sidebar: FC<SidebarProps> = ({isMobileMenuOpen}) => {
                             to="/deliveries"
                             icon={LucideAlignHorizontalDistributeEnd}
                             text="Delivery Partners"
+                            allowedRoles={["admin"]}
+                        />
+                        <SidebarItem
+                            to="/payments"
+                            icon={DollarSignIcon}
+                            text="Payments"
                             allowedRoles={["admin"]}
                         />
 
