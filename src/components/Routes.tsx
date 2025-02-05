@@ -23,7 +23,6 @@ const Routes = () => {
                 {
                     element: <ProtectedRoute allowedRoles={["admin", "user"]}/>,
                     children: [
-                        {path: "/", element: <DashboardPage/>},
                         {path: "medications", element: <MedicationPage/>},
                         {path: "settings", element: <SettingsPage/>},
                     ]
@@ -31,6 +30,7 @@ const Routes = () => {
                 {
                     element: <ProtectedRoute allowedRoles={["admin"]}/>,
                     children: [
+                        {path: "/", element: <DashboardPage/>},
                         {path: "payments", element: <PaymentPage/>},
                         {path: "orders", element: <OrdersPage/>},
                         {path: "users", element: <UsersPage/>},
