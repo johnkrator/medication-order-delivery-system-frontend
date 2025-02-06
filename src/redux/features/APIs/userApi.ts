@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// const API_URL = "http://localhost:3000/api";
 const API_URL = "https://pharmatradeapi.vercel.app/api";
 
 // An axios instance with default headers

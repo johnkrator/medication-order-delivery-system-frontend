@@ -11,6 +11,7 @@ export default defineConfig({
     server: {
         proxy: {
             "/api": {
+                // target: "http://localhost:3000/api",
                 target: "https://pharmatradeapi.vercel.app/api",
                 changeOrigin: true,
                 secure: false,

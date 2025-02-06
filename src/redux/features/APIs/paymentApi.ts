@@ -1,6 +1,7 @@
 import axios from "axios";
 import {CreatePaymentDto, VerifyPaymentDto} from "../../../common/interfaces.ts";
 
+// const API_URL = "http://localhost:3000/api";
 const API_URL = "https://pharmatradeapi.vercel.app/api";
 
 export const paymentApi = {
